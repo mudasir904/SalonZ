@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customers — SalonZ OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-noise"></div>
+<div class="bg-glow g1"></div>
+<div class="bg-glow g2"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="app-shell">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark"><i data-lucide="scissors"></i></div>
+      <div>
+        <div class="brand-name">SalonZ<span>OS</span></div>
+        <div class="brand-sub">Salon Manager</div>
+      </div>
+      <button class="modal-close sidebar-close" id="sidebarClose" style="margin-left:auto;"><i data-lucide="x"></i></button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+
+      <div class="nav-section-label">Management</div>
+      <a href="customers.html" class="nav-link"><i data-lucide="users"></i> Customers</a>
+      <a href="appointments.html" class="nav-link"><i data-lucide="calendar-check"></i> Appointments <span class="nav-badge">8</span></a>
+      <a href="employees.html" class="nav-link"><i data-lucide="id-card"></i> Employees</a>
+      <a href="services.html" class="nav-link"><i data-lucide="scissors"></i> Services</a>
+
+      <div class="nav-section-label">Finance</div>
+      <a href="billing.html" class="nav-link"><i data-lucide="receipt"></i> Billing</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="upgrade-card">
+        <strong>Go Pro</strong>
+        <p>Unlock multi-location management and advanced analytics.</p>
+        <button class="btn btn-primary btn-sm btn-block">Upgrade Plan</button>
+      </div>
+      <a href="login.html" class="logout-link"><i data-lucide="log-out"></i> Log Out</a>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <div class="main">
+
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+      <div class="topbar-search">
+        <i data-lucide="search"></i>
+        <input type="text" placeholder="Search clients, bookings, invoices…">
+      </div>
+      <div class="topbar-actions">
+        <div class="dropdown-wrap">
+          <button class="icon-btn" data-dropdown-toggle="notifDropdown"><i data-lucide="bell"></i><span class="icon-dot"></span></button>
+          <div class="dropdown-menu" id="notifDropdown">
+            <div class="dropdown-header">Notifications</div>
+            <div class="dropdown-item"><i data-lucide="calendar-plus"></i> New booking from Hamza Sheikh <span class="time">2m</span></div>
+            <div class="dropdown-item"><i data-lucide="credit-card"></i> Payment received — Rs 12,000 <span class="time">18m</span></div>
+            <div class="dropdown-item"><i data-lucide="user-plus"></i> Bilal Aslam joined as a client <span class="time">1h</span></div>
+            <div class="dropdown-item"><i data-lucide="alert-circle"></i> Invoice INV-9085 overdue <span class="time">3h</span></div>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" type="button"><i data-lucide="check-check"></i> Mark all as read</button>
+          </div>
+        </div>
+        <div class="topbar-divider"></div>
+        <div class="dropdown-wrap">
+          <button class="profile-chip" data-dropdown-toggle="profileDropdown">
+            <div class="avatar sm">AL</div>
+            <div class="profile-meta"><div class="name">Alee</div><div class="role">Shop Owner</div></div>
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="dropdown-menu" id="profileDropdown">
+            <div class="dropdown-item"><i data-lucide="user"></i> My Profile</div>
+            <div class="dropdown-item"><i data-lucide="settings"></i> Settings</div>
+            <div class="dropdown-item"><i data-lucide="help-circle"></i> Help Center</div>
+            <div class="dropdown-divider"></div>
+            <a href="login.html" class="dropdown-item danger"><i data-lucide="log-out"></i> Log Out</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page">
+
+      <div class="page-head" data-fade>
+        <div>
+          <div class="eyebrow">Management</div>
+          <h1 class="page-title">Customers</h1>
+          <p class="page-desc">2,481 total customers across all visits.</p>
+        </div>
+        <div class="page-head-actions">
+          <button class="btn btn-secondary"><i data-lucide="download"></i> Export</button>
+          <button class="btn btn-primary" data-open-modal="addCustomerModal"><i data-lucide="plus"></i> Add Customer</button>
+        </div>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="stats-grid">
+        <div class="card stat-card card-hover fade-in delay-1">
+          <div class="stat-top">
+            <div class="stat-icon"><i data-lucide="users"></i></div>
+            <div class="stat-trend up"><i data-lucide="arrow-up-right" style="width:12px;height:12px;"></i> 12.4%</div>
+          </div>
+          <div class="stat-value mono">2,481</div>
+          <div class="stat-label">Total Customers</div>
+        </div>
+        <div class="card stat-card card-hover fade-in delay-2">
+          <div class="stat-top">
+            <div class="stat-icon alt"><i data-lucide="user-plus"></i></div>
+            <div class="stat-trend up"><i data-lucide="arrow-up-right" style="width:12px;height:12px;"></i> 18 new</div>
+          </div>
+          <div class="stat-value mono">96</div>
+          <div class="stat-label">New This Month</div>
+        </div>
+        <div class="card stat-card card-hover fade-in delay-3">
+          <div class="stat-top">
+            <div class="stat-icon warn"><i data-lucide="repeat"></i></div>
+            <div class="stat-trend up"><i data-lucide="arrow-up-right" style="width:12px;height:12px;"></i> 4.6%</div>
+          </div>
+          <div class="stat-value mono">68%</div>
+          <div class="stat-label">Repeat Rate</div>
+        </div>
+        <div class="card stat-card card-hover fade-in delay-4">
+          <div class="stat-top">
+            <div class="stat-icon danger"><i data-lucide="star"></i></div>
+            <div class="stat-trend up"><i data-lucide="arrow-up-right" style="width:12px;height:12px;"></i> 0.2</div>
+          </div>
+          <div class="stat-value mono">4.8</div>
+          <div class="stat-label">Avg. Rating</div>
+        </div>
+      </div>
+
+      <!-- Customer Table -->
+      <div class="card card-hover fade-in delay-3">
+        <div class="card-head">
+          <h3>All Customers</h3>
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-ghost btn-sm"><i data-lucide="filter"></i> Filter</button>
+            <button class="btn btn-ghost btn-sm"><i data-lucide="arrow-up-down"></i> Sort</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Customer</th><th>Contact</th><th>Visits</th><th>Total Spent</th><th>Last Visit</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="cell-main"><div class="avatar sm">HS</div><div><div class="cell-title">Hamza Sheikh</div><div class="cell-sub">CU-1042</div></div></div></td>
+                <td>hamza.sheikh@gmail.com</td>
+                <td>24</td>
+                <td>Rs 18,600</td>
+                <td>Jun 14, 2026</td>
+                <td><span class="badge active">Active</span></td>
+                <td><button class="btn btn-ghost btn-sm"><i data-lucide="more-horizontal"></i></button></td>
+              </tr>
+              <tr>
+                <td><div class="cell-main"><div class="avatar sm c2">DK</div><div><div class="cell-title">Danish Khan</div><div class="cell-sub">CU-1041</div></div></div></td>
+                <td>danish.khan@outlook.com</td>
+                <td>11</td>
+                <td>Rs 7,400</td>
+                <td>Jun 12, 2026</td>
+                <td><span class="badge active">Active</span></td>
+                <td><button class="btn btn-ghost btn-sm"><i data-lucide="more-horizontal"></i></button></td>
+              </tr>
+              <tr>
+                <td><div class="cell-main"><div class="avatar sm c3">BA</div><div><div class="cell-title">Bilal Aslam</div><div class="cell-sub">CU-1040</div></div></div></td>
+                <td>bilal.aslam@proton.me</td>
+                <td>3</td>
+                <td>Rs 1,650</td>
+                <td>May 29, 2026</td>
+                <td><span class="badge active">Active</span></td>
+                <td><button class="btn btn-ghost btn-sm"><i data-lucide="more-horizontal"></i></button></td>
+              </tr>
+              <tr>
+                <td><div class="cell-main"><div class="avatar sm c4">UF</div><div><div class="cell-title">Usman Farooq</div><div class="cell-sub">CU-1039</div></div></div></td>
+                <td>usman.farooq@gmail.com</td>
+                <td>31</td>
+                <td>Rs 24,200</td>
+                <td>Jun 18, 2026</td>
+                <td><span class="badge active">Active</span></td>
+                <td><button class="btn btn-ghost btn-sm"><i data-lucide="more-horizontal"></i></button></td>
+              </tr>
+              <tr>
+                <td><div class="cell-main"><div class="avatar sm">AR</div><div><div class="cell-title">Ahmed Raza</div><div class="cell-sub">CU-1038</div></div></div></td>
+                <td>ahmed.raza@gmail.com</td>
+                <td>7</td>
+                <td>Rs 4,950</td>
+                <td>Jun 9, 2026</td>
+                <td><span class="badge active">Active</span></td>
+                <td><button class="btn btn-ghost btn-sm"><i data-lucide="more-horizontal"></i></button></td>
+              </tr>
+              <tr>
+                <td><div class="cell-main"><div class="avatar sm c2">FM</div><div><div class="cell-title">Faisal Mehmood</div><div class="cell-sub">CU-1037</div></div></div></td>
+                <td>faisal.mehmood@yahoo.com</td>
+                <td>15</td>
+                <td>Rs 11,200</td>
+                <td>Jun 5, 2026</td>
+                <td><span class="badge active">Active</span></td>
+                <td><button class="btn btn-ghost btn-sm"><i data-lucide="more-horizontal"></i></button></td>
+              </tr>
+              <tr>
+                <td><div class="cell-main"><div class="avatar sm c3">SI</div><div><div class="cell-title">Saad Iqbal</div><div class="cell-sub">CU-1036</div></div></div></td>
+                <td>saad.iqbal@gmail.com</td>
+                <td>2</td>
+                <td>Rs 1,100</td>
+                <td>Apr 18, 2026</td>
+                <td><span class="badge inactive">Inactive</span></td>
+                <td><button class="btn btn-ghost btn-sm"><i data-lucide="more-horizontal"></i></button></td>
+              </tr>
+              <tr>
+                <td><div class="cell-main"><div class="avatar sm c4">ZA</div><div><div class="cell-title">Zain Abbasi</div><div class="cell-sub">CU-1035</div></div></div></td>
+                <td>zain.abbasi@hotmail.com</td>
+                <td>19</td>
+                <td>Rs 14,800</td>
+                <td>Jun 16, 2026</td>
+                <td><span class="badge active">Active</span></td>
+                <td><button class="btn btn-ghost btn-sm"><i data-lucide="more-horizontal"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Add Customer Modal -->
+<div class="modal-overlay" id="addCustomerModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Add New Customer</h3>
+      <button class="modal-close" data-close-modal><i data-lucide="x"></i></button>
+    </div>
+    <form id="addCustomerForm">
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <input class="form-control" type="text" placeholder="e.g. Hamza Sheikh" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-control" type="email" placeholder="client@email.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone</label>
+          <input class="form-control" type="tel" placeholder="+92 300 1234567" required>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-secondary" data-close-modal>Cancel</button>
+        <button type="submit" class="btn btn-primary"><i data-lucide="user-plus"></i> Add Customer</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="script.js"></script>
+</body>
+</html>
